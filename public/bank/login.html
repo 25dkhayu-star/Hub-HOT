@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ХОТ Банк Вхід в аккаунт</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+    </div>
+
+    <div class="login-container">
+        <div class="login-header">
+            <h1>ХОТ Банк</h1>
+            <p>Увійдіть у свій обліковий запис</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <input type="email" id="loginEmail" required>
+                <label for="email">Email</label>
+                <div class="error-message" id="email-error">Please enter a valid email</div>
+            </div>
+
+            <div class="input-group">
+                <input type="password" id="loginPassword" required>
+                <label for="password">Password</label>
+                <div class="error-message" id="password-error">Password must be at least 6 characters</div>
+            </div>
+
+           
+
+            <button type="submit" class="login-button">Login</button>
+
+            <div class="signup-link">
+                Не маєте аккаунту? <a href="register.html" class="signup-text">Створити аккаунт</a>
+            </div>
+
+            
+        </form>
+    </div>
+
+    <script type="module" src="Scripts/login.js"></script>
+</body>
+</html>            

@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lyceumbankdataba",
+  "private_key_id": "02452f1c911734e1d86c33d3d41ff6a9d1105b2f",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDHFZfq2ReqHj+W\ne9V6BU2IEI1XpBin44S7QXv47OO2USYLxzVhs7baK3jRdIqqJjhZ1CDhRDlFFG3A\nopOP3dljOZnYxQxTK9TDxYnYMaDEyJiOaJihYjzIPJE9u+gyTzZASxyOI4PizULx\nBRyhs4AUvhMGOCV+ziKzAgJSY//6xzrpMzWK0OzxEijywm7RyqVmOXnx0jKidjZb\nwg8eynWYazpXz60cZxfMuN700FqGn8YVRwO3agmCtXXZTcDfLEq9PXXAYY6VAbxL\nzJyhF4SjHotkeuDAJe0jBiLjeC0+Q9sEin7Jwtqcpjg4ymPvwjXNlcM/V9sJd2uv\nYkkq3vbRAgMBAAECggEAG57i01noPxlwQAwRO5slvRVyzrB9HTnjLemxbgFLvH04\ntpSeUt5Qpac3XXP6Uw33bnsQTsCc43komvvTVjf005/nuNvp0FY58CllbQHBqNud\n0tAvMODExxEkI3kBB43W3IevQAcsYpiQy4imhsa1I+uVDx1WEmg+BzDlqpGmL6Aa\n4gR8POs9N9G8yrrlAc4r7IstvxCj80s7367+yI/oCoosykVhcnNhom39AHgDSreA\nXhU88kAQ/m5OufKyHN1QofkJBbB5DlFhFERWrXmmwJzotU1OBb+s8Bgop+WY+guU\ndaM8K3mCEN0tNdE1yL7fDGuKLy1LmgV2b9EeluW1YwKBgQDnjzQ4ff7LbMZ1DQQD\nr/Vn9+nxJgTBi66QHsOU7+5exraz4ASHMxUrIZJs2LXGZj3zJ5HSgPQvrYpxU8EC\nZQHmS/Aoa3g6+1IjaTIQGo5IpE34DDuSHfuFi2J9txkFvERb7y6R5SDx5hMl8Nug\nUXSqZaS3XUnTfAY3TmQGEMr97wKBgQDcGOe9QN26Gf9ba8jtf6QBHd5mLC411qbJ\npUUiI/jx9zc51NPB5S+hE9djYslmc9buvk5FQm0IEDqY2XfZ7TzHFwEAgRY9tzVW\nMh2uyAstfPHm8fzaIFKs3DyBkdXfriEn2lcvyJz3eFS0sZY6R3fhqjrvvGXhKxEK\nyTUnL4YXPwKBgBGQWCqsy+XMM2Vvfk11TEz9jf4fnx67JJuD6dvjMxZ3RiZwqIdE\nxadG3Z9p9Ke+25YU+0eXRm5TYHvmGW7AEJvSSL4YIL+AjqNm+Egma4JxDATzkJUt\ntwVTJD5a5Af+VsUOaF7inVQb2nn3QgFwDERcf1j1N4NWFfad+JJJNcx7AoGATdqJ\nbopZZBD6IM55nnj9/F8iYiXSmry49q79S1xKHN0DrfM4jGeTd3jbQY6aCyGCr6Sl\nbx5WDvoeoB6cpHukehALDLCcu2vo8/p6QW8FdSuzLav/cvDoDblBtdtuOdcQZ1Z2\nbLKbw3XPELOYnjjVkP90JYUQzJs9RgFySdAnsGUCgYAsKdKxBQNkr4dETgmXjzui\nWL8seYATGUfC053suF0BtzWAyGoqJWXNeauPEsn7of8j17cgt7n/Z+6WE9EFmvrO\niw3iPn6tFb0W4JipK4aT1j5EE93xEX3SYO0W8kdDCEpg/fXSv6GKaUEcUDgxV4j9\njMPOJ1EV/3zpekHoyPR3qA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@lyceumbankdataba.iam.gserviceaccount.com",
+  "client_id": "100856552216881314903",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40lyceumbankdataba.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

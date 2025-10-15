@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #1e1e2f;
+      color: white;
+      padding: 15px;
+      font-size: 16px;
+      position: relative;
+      min-height: 100vh;
+    }
+    h1 {
+      text-align: center;
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      margin: 1rem 0;
+    }
+    /* Hamburger Menu */
+    .hamburger {
+      display: none;
+      font-size: 1.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      z-index: 2000;
+    }
+    .nav-menu {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      transition: all 0.3s ease;
+    }
+    .nav-menu.active {
+      display: block;
+    }
+    .nav-menu button {
+      padding: 0.6rem 1rem;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      min-width: 90px;
+      touch-action: manipulation;
+      transition: background-color 0.2s ease;
+    }
+    .nav-menu button:hover {
+      background-color: #45a049;
+    }
+    .search-container {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .search-container input {
+      padding: 0.6rem;
+      width: min(300px, 90vw);
+      border-radius: 5px;
+      border: none;
+      font-size: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: box-shadow 0.2s ease;
+    }
+    .search-container input:focus {
+      outline: none;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    .search-container button {
+      padding: 0.6rem 1rem;
+      border: none;
+      background-color: #4caf50;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+      min-width: 100px;
+      touch-action: manipulation;
+      transition: background-color 0.2s ease;
+    }
+    .search-container button:hover {
+      background-color: #45a049;
+    }
+    .table-container {
+      margin-top: 1.5rem;
+      width: 100%;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #2d2d3f;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    th, td {
+      padding: 0.75rem;
+      border-bottom: 1px solid #444;
+      text-align: left;
+      font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    }
+    th {
+      background-color: #3a3a5a;
+    }
+    button {
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      min-width: 80px;
+      touch-action: manipulation;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .delete-btn {
+      background-color: #f44336;
+    }
+    .delete-btn:hover {
+      background-color: #e53935;
+    }
+    .edit-btn {
+      background-color: #ffa500;
+    }
+    .edit-btn:hover {
+      background-color: #ff8c00;
+    }
+    /* Card Layout for Mobile */
+    .card {
+      background: #2d2d3f;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+    .card-header {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    .card-content {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+    .card-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 1rem;
+    }
+    .modal-content {
+      background: #2d2d3f;
+      padding: 1.5rem;
+      border-radius: 10px;
+      width: min(400px, 95vw);
+      max-width: 95%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+    .modal-content h2 {
+      margin: 0 0 1rem;
+      text-align: center;
+      font-size: clamp(1.2rem, 4vw, 1.5rem);
+    }
+    .modal-content label {
+      display: block;
+      margin: 0.5rem 0 0.3rem;
+      font-size: 0.9rem;
+    }
+    .modal-content input, .modal-content textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border-radius: 5px;
+      border: none;
+      background: #3a3a5a;
+      color: white;
+      font-size: 0.9rem;
+    }
+    .modal-content textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    .modal-buttons {
+      margin-top: 1rem;
+      display: flex;
+      justify-content: flex-end;
+      gap: 0.5rem;
+    }
+    .modal-message {
+      text-align: center;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+    /* Back to Top Button */
+    #backToTop {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.2s ease;
+    }
+    #backToTop:hover {
+      background-color: #45a049;
+    }
+    /* Loading Indicator */
+    .loading {
+      text-align: center;
+      padding: 1rem;
+      display: none;
+      font-size: 1rem;
+    }
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: #1e1e2f;
+        padding: 1rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      }
+      .nav-menu.active {
+        display: block;
+      }
+      .nav-menu button {
+        display: block;
+        width: 100%;
+        margin: 0.5rem 0;
+      }
+      table {
+        display: none;
+      }
+      .card-container {
+        display: block;
+      }
+      .search-container input, .search-container button {
+        width: 100%;
+        max-width: none;
+      }
+      th, td {
+        font-size: 0.85rem;
+      }
+      .modal-content {
+        padding: 1rem;
+        width: 95vw;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="hamburger" onclick="toggleMenu()">&#9776;</button>
+  <h1>Admin Panel</h1>
+  <div class="nav-menu" id="navMenu">
+    <button onclick="showUsers()">Users</button>
+    <button onclick="showTransfers()">Transactions</button>
+    <button onclick="showProducts()">Shop</button>
+    <button onclick="showNews()">News</button>
+    <button onclick="showClubs()">Clubs</button>
+    <button onclick="showPlans()">Plans</button>
+  </div>
+  <div id="searchContainer" class="search-container">
+    <input type="text" id="userSearchInput" placeholder="Пошук користувача...">
+    <button onclick="addUser()">Create User</button>
+  </div>
+  <div id="productSearchContainer" style="display:none;" class="search-container">
+    <input type="text" id="productSearchInput" placeholder="Пошук товара...">
+    <button onclick="addProduct()">Add Product</button>
+  </div>
+  <div id="newsSearchContainer" style="display:none;" class="search-container">
+    <input type="text" id="newsSearchInput" placeholder="Пошук новини...">
+    <button onclick="addNews()">Додати новину</button>
+  </div>
+  <div id="clubSearchContainer" style="display:none;" class="search-container">
+    <input type="text" id="clubSearchInput" placeholder="Пошук клуба...">
+    <button onclick="addClub()">Додати клуб</button>
+  </div>
+  <div id="planSearchContainer" style="display:none;" class="search-container">
+    <input type="text" id="planSearchInput" placeholder="Пошук плана...">
+    <button onclick="addPlan()">Додати план</button>
+  </div>
+  <div class="loading" id="loading">Loading...</div>
+  <div class="table-container">
+    <div class="card-container" id="usersCardContainer"></div>
+    <table id="usersTableContainer">
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email (UID)</th>
+          <th>Balance</th>
+          <th>Card Number</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="usersTable"></tbody>
+    </table>
+  </div>
+  <div class="table-container">
+    <div class="card-container" id="transfersCardContainer"></div>
+    <table id="transfersTableContainer" style="display:none;">
+      <thead>
+        <tr>
+          <th>Sender</th>
+          <th>Recipient</th>
+          <th>Sum</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="transfersTable"></tbody>
+    </table>
+  </div>
+  <div class="table-container">
+    <div class="card-container" id="productsCardContainer"></div>
+    <table id="productsTableContainer" style="display:none;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Description</th>
+          <th>Image URL</th>
+          <th>Article</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="productsTable"></tbody>
+    </table>
+  </div>
+  <div class="table-container">
+    <div class="card-container" id="newsCardContainer"></div>
+    <table id="newsTableContainer" style="display:none;">
+      <thead>
+        <tr>
+          <th>Заголовок</th>
+          <th>Опис</th>
+          <th>Світлина</th>
+          <th>Дата</th>
+          <th>Дія</th>
+        </tr>
+      </thead>
+      <tbody id="newsTable"></tbody>
+    </table>
+  </div>
+  <div class="table-container">
+    <div class="card-container" id="clubsCardContainer"></div>
+    <table id="clubsTableContainer" style="display:none;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Logo Club</th>
+          <th>Image Owner Club</th>
+          <th>Name Owner Club</th>
+          <th>Google Form</th>
+          <th>Дія</th>
+        </tr>
+      </thead>
+      <tbody id="clubsTable"></tbody>
+    </table>
+  </div>
+  <div class="table-container">
+    <div class="card-container" id="plansCardContainer"></div>
+    <table id="plansTableContainer" style="display:none;">
+      <thead>
+        <tr>
+          <th>Заголовок</th>
+          <th>Опис</th>
+          <th>Дата</th>
+          <th>Прогрес</th>
+          <th>Дія</th>
+        </tr>
+      </thead>
+      <tbody id="plansTable"></tbody>
+    </table>
+  </div>
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <h2 id="modalTitle"></h2>
+      <div id="modalMessage" class="modal-message" style="display:none;"></div>
+      <form id="modalForm"></form>
+      <div class="modal-buttons">
+        <button type="button" id="modalCancel">Cancel</button>
+        <button type="submit" id="modalSubmit" form="modalForm">Submit</button>
+      </div>
+    </div>
+  </div>
+  <button id="backToTop" title="Back to Top">&uarr;</button>
+  <script>
+    // Hamburger Menu Toggle
+    function toggleMenu() {
+      const menu = document.getElementById('navMenu');
+      menu.classList.toggle('active');
+    }
+
+    // Back to Top Button
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+
+    function renderCards(containerId, data, fields, actions) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = '';
+      data.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        fields.forEach(field => {
+          const header = document.createElement('div');
+          header.className = 'card-header';
+          header.textContent = field.label;
+          const content = document.createElement('div');
+          content.className = 'card-content';
+          content.textContent = item[field.key] || 'N/A';
+          card.appendChild(header);
+          card.appendChild(content);
+        });
+        const actionsDiv = document.createElement('div');
+        actionsDiv.className = 'card-actions';
+        actions.forEach(action => {
+          const btn = document.createElement('button');
+          btn.className = action.class;
+          btn.textContent = action.label;
+          btn.onclick = () => action.callback(item);
+          actionsDiv.appendChild(btn);
+        });
+        card.appendChild(actionsDiv);
+        container.appendChild(card);
+      });
+    }
+  </script>
+  <script type="module" src="Scripts/admin.js"></script>
+</body>
+</html>
