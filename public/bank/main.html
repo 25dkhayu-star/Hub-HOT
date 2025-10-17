@@ -40,6 +40,10 @@
     <button id="openDragonButton">
       <img class="SendLogo" src="DragonArts/levelUpLogo.png" alt="">
     </button>
+    
+    <button id="openShopButton">
+      <img class="SendLogo" src="Logos/shopicon.png" alt="">
+    </button>
   </div>
 
   <div class="transferHistory">
@@ -152,7 +156,6 @@
     const buyButton = document.getElementById("buyButton");
     let selectedProduct = null;
 
-
     async function loadProducts() {
       try {
         const productsSnapshot = await getDocs(collection(db, "products"));
@@ -169,7 +172,6 @@
       }
     }
 
-   
     async function displayProducts() {
       productList.innerHTML = "";
       const products = await loadProducts();
@@ -209,7 +211,10 @@
       });
     }
 
-  
+    document.getElementById("openShopButton").addEventListener("click", () => {
+      document.getElementById("shopModal").style.display = "flex";
+      displayProducts();
+    });
    
     document.getElementById("closeProductDetail").addEventListener("click", () => {
       productDetailModal.style.display = "none";
@@ -276,7 +281,6 @@
       "DragonArts/Stage5.png"
     ];
     const MAX_DRAGON_LVL = 5; 
-
 
     function xpThresholdForLevel(lvl) {
       return 500 * Math.pow(2, lvl);
