@@ -1,0 +1,679 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background: #000; /* Black base background */
+  background-image: 
+    radial-gradient(circle, #fff 1px, transparent 1px); /* White dot grid */
+  background-size: 20px 20px; /* Grid size for dots */
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  
+  /* Анимация движения точек вниз */
+  background-position: 0 0;
+  animation: moveDots 70s linear infinite;
+}
+
+@keyframes moveDots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100vh; /* Точки двигаются на высоту экрана вниз */
+  }
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.container {
+  background: rgba(73, 73, 73, 0.418); 
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 25px;
+  width: 420px;
+  max-width: 92%;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  transform: scale(0.95);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 10;
+  backdrop-filter: blur(3px);
+  margin-bottom: 8px;
+  
+}
+
+.container:hover {
+  transform: scale(1);
+  box-shadow: 0 0 5px rgba(129, 129, 129, 0.9), 0 0 80px rgba(255, 255, 255, 0.7);
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 2px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.5); }
+  50% { box-shadow: 0 0 5px rgba(184, 184, 184, 0.9), 0 0 70px rgba(165, 165, 165, 0.7); }
+  100% { box-shadow: 0 0 1px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.5); }
+}
+
+.container2 {
+  background: rgba(73, 73, 73, 0.418); 
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  width: 420px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  max-width: 92%;
+  padding: 20px;
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(3px);
+  display: flex;
+  gap: 12px;
+  
+  transform: scale(0.95);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 10;
+  margin-bottom: 8px;
+ 
+}
+
+.container2:hover {
+  transform: scale(1);
+  
+}
+
+.transfer-message {
+  color: white;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+  padding: 12px 16px;
+  border-radius: 18px;
+  backdrop-filter: blur(6px);
+  margin: 8px 0;
+  font-size: 16px;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease;
+}
+
+.transfer-message:hover {
+  transform: translateY(-3px) scale(1.02);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+}
+
+.lycoin {
+  width: 18px;
+  height: 18px;
+  vertical-align: middle;
+  margin-left: -2px;
+  animation: spinCoin 2s linear infinite;
+}
+
+@keyframes spinCoin {
+  0% { transform: rotateY(0deg); }
+  100% { transform: rotateY(360deg); }
+}
+
+.incoming {
+  border-left: 6px solid #ffffff;
+  animation: slideInLeft 0.5s ease;
+}
+
+.outgoing {
+  border-left: 6px solid #8a8a8a;
+  animation: slideInRight 0.5s ease;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.nfcLogo {
+  width: 32px;
+  margin-top: -5px;
+  margin-left: 12px;
+  transition: transform 0.3s ease;
+}
+
+.nfcLogo:hover {
+  transform: rotate(360deg);
+}
+
+.transferHistory {
+  background: rgba(51, 51, 51, 0.418); 
+  border-radius: 25px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  width: 420px;
+  max-width: 92%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  padding: 25px;
+  height: 300px;
+  position: relative;
+  backdrop-filter: blur(6px);
+  overflow-y: scroll;
+  transform: scale(0.95);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 10;
+  margin-bottom: 8px;
+}
+
+.transferHistory:hover {
+  transform: scale(1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+h2 {
+  text-align: center;
+  color: #ffffff;
+  right: 0;
+  font-size: 16px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  
+}
+
+@keyframes textGlow {
+  0% { text-shadow: 0 0 10px rgba(255, 77, 77, 0.7); }
+  50% { text-shadow: 0 0 20px rgba(255, 77, 77, 0.9); }
+  100% { text-shadow: 0 0 10px rgba(255, 77, 77, 0.7); }
+}
+
+h3 {
+  color: #ffffff;
+  font-size: 22px;
+  margin-bottom: 12px;
+  text-shadow: 0 0 8px rgba(0, 0, 0, 0.7);
+}
+
+.info {
+  margin-bottom: 6px;
+  font-size: 1.6rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  backdrop-filter: blur(6px);
+  gap: 4px;
+  transition: transform 0.3s ease;
+}
+
+.info:hover {
+  transform: translateY(-2px);
+}
+
+.info2 {
+  margin-bottom: 6px;
+  font-size: 1.5rem;
+  text-align: center;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+label {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.cardNumber {
+  margin-bottom: 22px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 6px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.USDFont {
+ 
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 5px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  color: white;
+}
+
+.cardNumber:hover {
+  transform: translateY(-2px);
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-top: 6px;
+  margin-bottom: 18px;
+  border-radius: 18px;
+  border: none;
+  font-size: 1.1rem;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(6px);
+  color: white;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
+  transform: scale(1.02);
+}
+
+.buttonSend {
+   width: 100%;
+  padding: 2px;
+  border: none;
+  background: rgba(255, 255, 255, 0.027);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+.h5{
+  color: white;
+}
+.buttonSend::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+.buttonSend:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.buttonSend:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
+}
+
+button {
+  width: 50%;
+  padding: 2px;
+  border: none;
+  background: rgba(255, 255, 255, 0.027);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+button:hover {
+  background: linear-gradient(45deg, #ffffff, #868686);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(223, 223, 223, 0.6);
+}
+
+button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s ease, height 0.6s ease;
+}
+
+button:hover::before {
+  width: 200px;
+  height: 200px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeInModal 0.5s ease;
+}
+
+@keyframes fadeInModal {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@font-face {
+  font-family: 'MyFont';
+  src: url('/fonts/e-Ukraine-Light.otf') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.modal-content {
+  
+  background: rgba(73, 73, 73, 0.418); 
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 25px;
+  width: 420px;
+  max-width: 92%;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  transform: scale(0.95);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  margin-bottom: 8px;
+  
+
+}
+
+@keyframes slideUpModal {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-content-dragon {
+  background: linear-gradient(135deg, #ffffff, #b71c1c);
+  border-radius: 25px;
+  padding: 35px;
+  width: 420px;
+  max-width: 92%;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  animation: slideUpModal 0.5s ease;
+}
+
+.LyCoinLogo {
+  width: 45px;
+  margin-top: -3px;
+  animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.modal-header {
+  font-size: 1.6rem;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  color: white;
+  justify-content: center;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+}
+
+.NameStyle {
+  margin-bottom: 22px;
+  background: rgba(255, 255, 255, 0.5);
+  padding: 6px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.modal-close {
+  background: rgba(255, 255, 255, 0.212);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+  border: none;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
+  transition: transform 0.3s ease;
+}
+
+.modal-close:hover {
+  transform: rotate(90deg);
+}
+
+.transferItem {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 1.1rem;
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.transferItem:hover {
+  background: rgba(255, 77, 77, 0.2);
+}
+
+.horizontal {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.LyceumLogo {
+  width: 110px;
+  height: 30px;
+  margin-top: -8px;
+  transition: transform 0.3s ease;
+}
+
+.LyceumLogo:hover {
+  transform: scale(1.1);
+}
+#balance{
+  color: white;
+}
+.SendLogo {
+  width: 55px;
+  height: 55px;
+  transition: transform 0.3s ease;
+}
+
+.SendLogo:hover {
+  transform: rotate(360deg);
+}
+
+
+.dragon-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  color: #fff;
+}
+
+.dragon-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 15px;
+  background: linear-gradient(135deg, #f3f3f3, #ffebee);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0% { transform: rotate(2deg); }
+  50% { transform: rotate(-2deg); }
+  100% { transform: rotate(2deg); }
+}
+
+.dragon-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.progress-wrapper {
+  width: 100%;
+  max-width: 340px;
+  background: #333;
+  border-radius: 25px;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+}
+
+.progress-bar {
+  height: 20px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #ffffff, #c4c4c4);
+  width: 0%;
+  transition: width 0.5s ease;
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+}
+
+.imageDragon {
+  width: 220px;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.dragon-stats {
+  text-align: center;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 8px rgba(255, 140, 0, 0.7);
+}
+
+.dragon-controls {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+#dragonModal .modal-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.dragonImage {
+  display: block;
+  margin: 0 auto 18px auto;
+  max-width: 130px;
+  animation: bounce 1.5s ease infinite;
+}
+
+.small-btn {
+  padding: 10px 14px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(45deg, #ff1744, #ff8c00);
+  color: white;
+  font-weight: 700;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.small-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 77, 77, 0.6);
+}
+
+.small-btn:active {
+  transform: translateY(1px);
+}
+
+
+@media (max-width: 600px) {
+  .container, .container2, .transferHistory, .modal-content, .modal-content-dragon {
+    width: 95%;
+    padding: 15px;
+  }
+
+  .dragon-image {
+    width: 120px;
+    height: 120px;
+  }
+
+  .progress-wrapper {
+    max-width: 280px;
+  }
+
+  .buttonSend, button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  h2, h3 {
+    font-size: 18px;
+  }
+
+  .info {
+    font-size: 1.4rem;
+  }
+
+  .LyceumLogo {
+    width: 90px;
+    height: 24px;
+  }
+
+  .SendLogo {
+    width: 45px;
+    height: 45px;
+  }
+}
+@media (min-width: 1520px) {
+      .container, .container2, .transferHistory, .modal-content {
+        width: 600px;
+      }
+      .transferHistory{
+        height: 500px;
+      }
+     .buttonSend{
+      height: 50px;
+     }
+      
+    }
