@@ -15,6 +15,7 @@ body {
   height: 100vh;
   display: flex;
   justify-content: center;
+  touch-action: none;
   align-items: center;
   overflow: hidden;
   flex-direction: column;
