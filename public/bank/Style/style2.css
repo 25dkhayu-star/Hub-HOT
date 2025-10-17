@@ -8,13 +8,20 @@
 }
 
 body {
-    background-color: #c01df2;
-    background: linear-gradient(135deg, #ffd27f 0%, #ffcd82 100%);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+  background: #000;
+  background-image: 
+    radial-gradient(circle, #fff 1px, transparent 1px); 
+  background-size: 20px 20px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  flex-direction: column;
+  
+  
+  background-position: 0 0;
+  animation: moveDots 70s linear infinite;
 }
 
 .login-container {
