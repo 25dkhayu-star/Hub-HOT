@@ -5,26 +5,44 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>HOT Bank</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Share+Tech&display=swap" rel="stylesheet">
   <style>
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');
+ 
+
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'MyFont', 'Poppins', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body {
-  background: linear-gradient(45deg, #1a1a1a, #2c1a1a, #4b1c1c, #2c1a1a);
-  background-size: 400% 400%;
-  animation: gradientFlow 15s ease infinite;
+  background: #000; /* Black base background */
+  background-image: 
+    radial-gradient(circle, #fff 1px, transparent 1px); /* White dot grid */
+  background-size: 20px 20px; /* Grid size for dots */
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   flex-direction: column;
+  
+  /* Анимация движения точек вниз */
+  background-position: 0 0;
+  animation: moveDots 70s linear infinite;
+}
+
+@keyframes moveDots {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 100vh; /* Точки двигаются на высоту экрана вниз */
+  }
 }
 
 @keyframes gradientFlow {
@@ -34,8 +52,8 @@ body {
 }
 
 .container {
-  background: linear-gradient(135deg, #ff4d4d, #ff8c00);
-  box-shadow: 0 0 40px rgba(255, 77, 77, 0.7), 0 0 60px rgba(255, 140, 0, 0.5);
+  background: rgba(73, 73, 73, 0.418); 
+  border: 2px solid rgba(255, 255, 255, 0.25);
   border-radius: 25px;
   width: 420px;
   max-width: 92%;
@@ -45,41 +63,46 @@ body {
   transform: scale(0.95);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   z-index: 10;
+  backdrop-filter: blur(3px);
   margin-bottom: 8px;
-  animation: pulseGlow 2s ease-in-out infinite;
+  
 }
 
 .container:hover {
   transform: scale(1);
-  box-shadow: 0 0 60px rgba(255, 77, 77, 0.9), 0 0 80px rgba(255, 140, 0, 0.7);
+  box-shadow: 0 0 5px rgba(129, 129, 129, 0.9), 0 0 80px rgba(255, 255, 255, 0.7);
 }
 
 @keyframes pulseGlow {
-  0% { box-shadow: 0 0 30px rgba(255, 77, 77, 0.7), 0 0 50px rgba(255, 140, 0, 0.5); }
-  50% { box-shadow: 0 0 50px rgba(255, 77, 77, 0.9), 0 0 70px rgba(255, 140, 0, 0.7); }
-  100% { box-shadow: 0 0 30px rgba(255, 77, 77, 0.7), 0 0 50px rgba(255, 140, 0, 0.5); }
+  0% { box-shadow: 0 0 2px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.5); }
+  50% { box-shadow: 0 0 5px rgba(184, 184, 184, 0.9), 0 0 70px rgba(165, 165, 165, 0.7); }
+  100% { box-shadow: 0 0 1px rgba(255, 255, 255, 0.7), 0 0 50px rgba(255, 255, 255, 0.5); }
 }
 
 .container2 {
-  background: linear-gradient(135deg, #d32f2f, #ffca28);
+  background: rgba(73, 73, 73, 0.418); 
   border-radius: 25px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   width: 420px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
   max-width: 92%;
   padding: 20px;
   position: relative;
   overflow: hidden;
+  backdrop-filter: blur(3px);
   display: flex;
   gap: 12px;
+  
   transform: scale(0.95);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
   z-index: 10;
   margin-bottom: 8px;
+ 
 }
 
 .container2:hover {
   transform: scale(1);
-  box-shadow: 0 20px 50px rgba(255, 77, 77, 0.6);
+  
 }
 
 .transfer-message {
@@ -99,8 +122,8 @@ body {
 
 .transfer-message:hover {
   transform: translateY(-3px) scale(1.02);
-  background: rgba(255, 77, 77, 0.3);
-  box-shadow: 0 8px 25px rgba(255, 77, 77, 0.5);
+  background: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
 }
 
 .lycoin {
@@ -117,12 +140,12 @@ body {
 }
 
 .incoming {
-  border-left: 6px solid #00e676;
+  border-left: 6px solid #ffffff;
   animation: slideInLeft 0.5s ease;
 }
 
 .outgoing {
-  border-left: 6px solid #ff1744;
+  border-left: 6px solid #8a8a8a;
   animation: slideInRight 0.5s ease;
 }
 
@@ -148,14 +171,16 @@ body {
 }
 
 .transferHistory {
-  background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+  background: rgba(51, 51, 51, 0.418); 
   border-radius: 25px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   width: 420px;
   max-width: 92%;
+  border: 2px solid rgba(255, 255, 255, 0.25);
   padding: 25px;
   height: 300px;
   position: relative;
+  backdrop-filter: blur(6px);
   overflow-y: scroll;
   transform: scale(0.95);
   transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -165,16 +190,16 @@ body {
 
 .transferHistory:hover {
   transform: scale(1);
-  box-shadow: 0 20px 50px rgba(255, 77, 77, 0.5);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
 }
 
 h2 {
   text-align: center;
   color: #ffffff;
-  margin-bottom: 22px;
+  right: 0;
   font-size: 16px;
-  text-shadow: 0 0 10px rgba(255, 77, 77, 0.7);
-  animation: textGlow 1.5s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+  
 }
 
 @keyframes textGlow {
@@ -213,7 +238,7 @@ h3 {
   margin-bottom: 6px;
   font-size: 1.5rem;
   text-align: center;
-  text-shadow: 0 0 5px rgba(255, 140, 0, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
 }
 
 label {
@@ -229,6 +254,18 @@ label {
   border-radius: 15px;
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease;
+  color: white;
+}
+
+.USDFont {
+ 
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 5px;
+  border-radius: 15px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  color: white;
 }
 
 .cardNumber:hover {
@@ -253,26 +290,30 @@ input {
 
 input:focus {
   outline: none;
-  box-shadow: 0 0 15px rgba(255, 77, 77, 0.7);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.7);
   transform: scale(1.02);
 }
 
 .buttonSend {
-  width: 100%;
-  padding: 12px;
+   width: 100%;
+  padding: 2px;
   border: none;
-  background: linear-gradient(45deg, #ff1744, #ff6a5f);
+  background: rgba(255, 255, 255, 0.027);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  border-radius: 50px;
+  border-radius: 20px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
+  backdrop-filter: blur(10px);
   transition: all 0.3s ease;
-  backdrop-filter: blur(6px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
   position: relative;
   overflow: hidden;
 }
-
+.h5{
+  color: white;
+}
 .buttonSend::before {
   content: '';
   position: absolute;
@@ -293,7 +334,7 @@ input:focus {
 
 .buttonSend:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 77, 77, 0.6);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.6);
 }
 
 button {
@@ -303,7 +344,7 @@ button {
   background: rgba(255, 255, 255, 0.027);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: white;
-  border-radius: 100px;
+  border-radius: 20px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
@@ -315,9 +356,9 @@ button {
 }
 
 button:hover {
-  background: linear-gradient(45deg, #ff6e40, #ffca28);
+  background: linear-gradient(45deg, #ffffff, #868686);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(255, 77, 77, 0.6);
+  box-shadow: 0 8px 25px rgba(223, 223, 223, 0.6);
 }
 
 button::before {
@@ -365,17 +406,23 @@ button:hover::before {
 }
 
 .modal-content {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4));
-  border: none;
-  backdrop-filter: blur(12px);
+  
+  background: rgba(73, 73, 73, 0.418); 
+  border: 2px solid rgba(255, 255, 255, 0.25);
   border-radius: 25px;
-  padding: 35px;
   width: 420px;
-  height: 550px;
-  overflow: scroll;
   max-width: 92%;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-  animation: slideUpModal 0.5s ease;
+  padding: 25px;
+  position: relative;
+  overflow: hidden;
+  color: white;
+  transform: scale(0.95);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  margin-bottom: 8px;
+  
+
 }
 
 @keyframes slideUpModal {
@@ -384,7 +431,7 @@ button:hover::before {
 }
 
 .modal-content-dragon {
-  background: linear-gradient(135deg, #4b1c1c, #b71c1c);
+  background: linear-gradient(135deg, #ffffff, #b71c1c);
   border-radius: 25px;
   padding: 35px;
   width: 420px;
@@ -409,6 +456,7 @@ button:hover::before {
   margin-bottom: 22px;
   display: flex;
   align-items: center;
+  color: white;
   justify-content: center;
   text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
 }
@@ -472,7 +520,9 @@ button:hover::before {
 .LyceumLogo:hover {
   transform: scale(1.1);
 }
-
+#balance{
+  color: white;
+}
 .SendLogo {
   width: 55px;
   height: 55px;
@@ -530,10 +580,10 @@ button:hover::before {
 .progress-bar {
   height: 20px;
   border-radius: 15px;
-  background: linear-gradient(90deg, #ff6e40, #ff1744);
+  background: linear-gradient(90deg, #ffffff, #c4c4c4);
   width: 0%;
   transition: width 0.5s ease;
-  box-shadow: 0 0 15px rgba(255, 77, 77, 0.7);
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
 }
 
 .imageDragon {
@@ -634,22 +684,22 @@ button:hover::before {
 
 <body>
 
-  <h2 class="NameStyle" id="welcomeMessage">Loading...</h2>
+  
   <div class="container">
     <div class="horizontal">
-      <h3>Hot Card</h3>
-      <img class="LyceumLogo" src="Logos/LyceumLogo.png" alt="">
+      <h3>Prime Card</h3>
+      <h2 class="USDFont" id="welcomeMessage">Loading...</h2>
     </div>
 
     <br>
     <div class="info2">
       <span id="cardNumber" class="cardNumber">•••• •••• •••• ••••</span>
-      <img class="nfcLogo" src="Logos/Card/nfc.png" alt="">
+      
     </div>
     <br>
     <div class="info">
-      <img class="LyCoinLogo" src="/Logos/logoHot.png" alt="">
-      <span class="label"></span> <span id="balance">0.00</span>
+      <span class="USDFont">$</span>
+      <span class="USDFont" id="balance">0</span>
     </div>
   </div>
 
@@ -659,7 +709,7 @@ button:hover::before {
     </button>
     
     <button id="openDragonButton">
-      <img class="SendLogo" src="DragonArts/hotIcon.png" alt="">
+      <img class="SendLogo" src="DragonArts/levelUpLogo.png" alt="">
     </button>
   </div>
 
@@ -721,7 +771,7 @@ button:hover::before {
   <div id="transactionModal" class="modal">
     <div class="modal-content" style="text-align: center;">
       <div class="modal-close" id="closeTransactionModal">&times;</div>
-      <img src="Logos/logoHot.png" alt="LyCoin" style="width: 150px; margin-bottom: 20px;">
+      <img src="Logos/ControlPanel/send (1).png" alt="" style="width: 150px; margin-bottom: 20px;">
       <h2 id="txAmount" style="font-size: 28px; margin-bottom: 15px; color: #333;"></h2>
       <h3 id="txFrom" style="margin-bottom: 10px; color: #555;"></h3>
       <p id="txTime" style="color: #383838; font-size: 14px;"></p>
@@ -1082,7 +1132,7 @@ button:hover::before {
 
         if (transfer.type === "incoming") {
           p.classList.add("incoming");
-          p.innerHTML = `${transfer.from} sent you ${transfer.amount} <img src="Logos/logoHot.png" class="lycoin" alt="LyCoin">`;
+          p.innerHTML = `${transfer.from} sent you ${transfer.amount}  <span class="USDFont">$</span>`;
 
           p.addEventListener("click", () => {
             document.getElementById("transactionModal").style.display = "flex";
@@ -1094,7 +1144,7 @@ button:hover::before {
           });
         } else {
           p.classList.add("outgoing");
-          p.innerHTML = `You sent ${transfer.amount} <img src="Logos/logoHot.png" class="lycoin" alt="LyCoin"> to ${transfer.to}`;
+          p.innerHTML = `You sent ${transfer.amount}  <span class="USDFont">$</span> to ${transfer.to}`;
         }
 
         transferHistoryDiv.appendChild(p);
