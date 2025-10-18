@@ -6,13 +6,14 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.6.0/firebase
 
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB4CZaN--bpjLcVRfmJhpTIpspr8eVZS3E",
-  authDomain: "lyceumbankdataba.firebaseapp.com",
-  projectId: "lyceumbankdataba",
-  storageBucket: "lyceumbankdataba.firebasestorage.app",
-  messagingSenderId: "829599602812",
-  appId: "1:829599602812:web:96664af9817ce9b92491f9",
-  measurementId: "G-W6LPMFS345"
+  apiKey: "AIzaSyAcahouN8q43rf7AWFXftLPqLjyGe-KC3s",
+  authDomain: "primebank-c7f22.firebaseapp.com",
+  databaseURL: "https://primebank-c7f22-default-rtdb.firebaseio.com",
+  projectId: "primebank-c7f22",
+  storageBucket: "primebank-c7f22.firebasestorage.app",
+  messagingSenderId: "625363108611",
+  appId: "1:625363108611:web:5f3c65a950bd97532bdf36",
+  measurementId: "G-5KDYLJ8J2J"
 };
 
 const app = initializeApp(firebaseConfig);

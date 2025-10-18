@@ -4,18 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HOT HUB</title>
+    <title>PRIME BANK</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Share+Tech&display=swap"
+        rel="stylesheet">
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
         :root {
-            --primary: #ff4d4d;
-            --secondary: #ff1a1a;
-            --dark: #1a0000;
+            --primary: #ffffff;
+            --secondary: #ffffff;
+            --dark: #000000;
             --light: #ffffff;
-            --accent: #ff6666;
+            --accent: #797979;
             --card-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
             --transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             --card-border: rgba(255, 255, 255, 0.2);
@@ -25,15 +30,24 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
         }
 
         body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #2b0000, #4b0000);
-            color: var(--light);
-            overflow-x: hidden;
-            line-height: 1.6;
+            background: #000;
+            background-image:
+                radial-gradient(circle, #808080 1px, transparent 1px);
+
+            background-size: 20px 20px;
+
+            display: flex;
+
+            justify-content: center;
+            align-items: center;
+
+            flex-direction: column;
             position: relative;
+            animation: moveDots 70s linear infinite;
         }
 
         #fire-canvas {
@@ -69,15 +83,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(20, 0, 0, 0.5);
+            background: rgba(22, 22, 22, 0.5);
             backdrop-filter: blur(20px);
             transition: var(--transition);
         }
 
         header.scrolled {
-            background: rgba(40, 0, 0, 0.8);
+            background: rgba(22, 22, 22, 0.5);
             padding: 1rem 5%;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.137);
+            color: black;
             transform: translateY(0) scale(1.02);
         }
 
@@ -185,7 +200,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle, rgba(255, 77, 77, 0.3), transparent);
+            background: radial-gradient(circle, rgba(77, 77, 77, 0.3), transparent);
             animation: pulse 10s infinite;
         }
 
@@ -244,6 +259,7 @@
             border-radius: 50px;
             font-weight: 700;
             text-decoration: none;
+            color: black;
             transition: var(--transition);
             border: 2px solid transparent;
             position: relative;
@@ -267,13 +283,27 @@
 
         .btn-primary {
             background: linear-gradient(45deg, var(--primary), var(--secondary));
-            color: var(--light);
+            color: black;
             box-shadow: 0 0 15px var(--primary);
         }
 
         .btn-primary:hover {
             background: transparent;
             border-color: var(--primary);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-primaryI {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: rgb(0, 0, 0);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .btn-primaryI:hover {
+            background: transparent;
+            border-color: var(--primary);
+            color: white;
             transform: scale(1.1) translateY(-5px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
@@ -300,7 +330,7 @@
         .hero-image img {
             width: 100%;
             max-width: 600px;
-            border-radius: 25px;
+            border-radius: 40px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             transform: perspective(1200px) rotateY(-20deg);
             transition: var(--transition);
@@ -378,6 +408,7 @@
             overflow: hidden;
             border-radius: 30px;
             padding: 8rem 2.5rem;
+            height: 400px;
             text-align: center;
             transition: var(--transition);
             border: 1px solid var(--card-border);
@@ -408,7 +439,8 @@
         .service-card p {
             position: relative;
             z-index: 1;
-            top: -130px;
+            top: 200px;
+            font-size: 1.5rem;
             color: var(--light);
             transition: var(--transition);
         }
@@ -541,6 +573,10 @@
             color: var(--light);
             cursor: pointer;
             transition: var(--transition);
+        }
+
+        i {
+            color: black;
         }
 
         .close-club:hover {
@@ -696,6 +732,14 @@
             gap: 8px;
         }
 
+        .line {
+            width: 90%;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0.9;
+            height: 1px;
+        }
+
         .pagination button {
             padding: 8px 16px;
             border: none;
@@ -774,15 +818,15 @@
 
         .modal-text p {
             margin-bottom: 1.5rem;
-            
+
             text-align: left;
-           
+
             line-height: 1.8;
-            
+
             font-size: 1rem;
-     
+
             color: var(--light);
-          
+
         }
 
         .modal-text p a {
@@ -1062,9 +1106,10 @@
                 right: -100%;
                 width: 80%;
                 height: 100vh;
-                background: rgba(255, 77, 77, 0.9);
+                background: rgba(255, 255, 255, 0.9);
                 flex-direction: column;
                 align-items: center;
+                color: black;
                 justify-content: center;
                 transition: var(--transition);
                 z-index: 1000;
@@ -1143,13 +1188,13 @@
 
 <body>
     <header id="header">
-        <a href="#" class="logo">HOT<span>HUB</span></a>
+        <a href="#" class="logo">PRIME<span>BANK</span></a>
         <ul class="nav-links">
-            <li><a href="#home">Головна</a></li>
-            <li><a href="#team">Команда</a></li>
-            <li><a href="#news">Інфо</a></li>
-            <li><a href="#clubs">Клуби</a></li>
-           
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#team">TEAM</a></li>
+            <li><a href="#news">INFO</a></li>
+            <li><a href="#clubs">CLUBS</a></li>
+
         </ul>
         <div class="hamburger">
             <div></div>
@@ -1162,80 +1207,36 @@
         <div class="hero-content">
             <div class="hero-text">
                 <br><br><br>
-                <h1>ХОТ <span>ХАБ</span></h1>
-                <p>ХОТ НОВИНИ</p>
+                <h1>PRIME <span>BANK</span></h1>
+                <p>BANK NEWS</p>
                 <div class="hero-btns">
-                    <a href="#news" class="btn btn-primary">Перегляд інформації</a>
-                    <a href="#team" class="btn btn-secondary">Команда</a>
+                    <a href="#news" class="btn btn-primaryI">INFORMATION</a>
+                    <a href="#team" class="btn btn-secondary">TEAM</a>
                 </div>
             </div>
             <div class="hero-image">
-                <img src="Logos/DSC_2473.JPG" alt="HOT">
+                <img src="Logos/card.png" alt="HOT">
                 <div class="social-links"></div>
             </div>
         </div>
     </section>
-
+    <div class="line"></div>
     <section class="section" id="team">
         <div class="section-title">
-            <h2>ХОТ КОМАНДА</h2>
+            <h2>TEAM</h2>
         </div>
         <div class="services-grid">
+
             <div class="service-card">
-                <img src="TeamImg/Screenshot_2.png" alt="">
-                <h3>Green сектор</h3>
-                <p>Серветник Поліна </p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/vika2.png" alt="">
-                <h3>Leader сектор</h3>
-                <p>Косяк Вікторія </p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/owner2.png" alt="">
-                <h3>Голова</h3>
-                <p>Болейко Дар’я</p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/andrushahot2.png" alt="">
-                <h3>Заступник голови</h3>
-                <p>Зіньковський Андрій</p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/Screenshot_1.png" alt="">
-                <h3>Спортивний сектор</h3>
-                <p>Кузнєцова Аріна</p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/arinaHOT2.png" alt="">
-                <h3>Культурно-масовий сектор</h3>
-                <p>Мельник Каріна</p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/angelinahot2.png" alt="">
-                <h3>Інформаційний ектор</h3>
-                <p>Горкуша Ангеліна</p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/AndreySOnyaHOt.png" alt="">
-                <h3>Інноваційний сектор</h3>
-                <p>Хомич Андрій</p>
-            </div>
-            <div class="service-card">
-                <img src="TeamImg/egorhot2.png" alt="">
-                <h3>Волонтерський сектор</h3>
-                <p>Рєвнівцев Єгор</p>
-            </div>
-            <div class="service-card">
-                <img src="Logos/hot.png" alt="">
-                <h3>HOT</h3>
+                <img src="Logos/image.jpg" alt="">
+                <h3>PRIMES</h3>
             </div>
         </div>
     </section>
-
+    <div class="line"></div>
     <section class="section" id="news">
         <div class="section-title">
-            <h2>ІНФО</h2>
+            <h2>INFORMATION</h2>
         </div>
         <div class="newsBox" id="newsContainer"></div>
         <div id="pagination" class="pagination"></div>
@@ -1251,9 +1252,10 @@
         </div>
     </section>
 
+    <div class="line"></div>
     <section class="section" id="clubs">
         <div class="section-title">
-            <h2>КЛУБИ</h2>
+            <h2>CLUBS</h2>
         </div>
         <div class="clubs-grid" id="clubsContainer"></div>
         <div id="clubModal" class="club-modal">
@@ -1266,23 +1268,23 @@
             </div>
         </div>
     </section>
+    <div class="line"></div>
 
-    
     <footer>
         <div class="footer-content">
-            <a href="#" class="footer-logo">ХОТ<span>ХАБ</span></a>
+            <a href="#" class="footer-logo">PRIME<span>BANK</span></a>
             <ul class="footer-links">
-                <li><a href="#home">Головна</a></li>
-                <li><a href="#team">Команда</a></li>
-                <li><a href="#news">Інфо</a></li>
-                <li><a href="#clubs">Клуби</a></li>
-               
+                <li><a href="#home">HOME</a></li>
+                <li><a href="#team">TEAM</a></li>
+                <li><a href="#news">INFO</a></li>
+                <li><a href="#clubs">CLUBS</a></li>
+
             </ul>
             <div class="footer-social"></div>
-            <p class="copyright">©2025 HOT</p>
+            <p class="copyright">©2025 PRIME BANK</p>
         </div>
     </footer>
-
+    <div class="line"></div>
     <div class="scroll-top">
         <i class="fas fa-arrow-up"></i>
     </div>
@@ -1335,14 +1337,14 @@
         }
 
         function linkify(text) {
-           
+
             const normalizedText = text.trim().replace(/\r\n/g, '\n').replace(/\n{2,}/g, '\n\n');
 
-          
+
             const paragraphs = normalizedText.split('\n\n').map(paragraph => {
-               
+
                 const formattedParagraph = paragraph.replace(/\n/g, '<br>');
-              
+
                 return formattedParagraph.trim() ? `<p>${formattedParagraph}</p>` : '';
             }).filter(p => p).join('');
 

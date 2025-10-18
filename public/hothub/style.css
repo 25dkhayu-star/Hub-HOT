@@ -1,10 +1,10 @@
 :root {
-	--color-bg: #470404;
+	--color-bg: #000000;
 	--color-text: #ffffff;
-	--color-primary: #ff3366;
-	--color-secondary: #b81515;
-	--color-tertiary: #ff5f5f;
-	--color-accent: #ffd900;
+	--color-primary: #000000;
+	--color-secondary: #000000;
+	--color-tertiary: #000000;
+	--color-accent: #000000;
 	--card-radius: 50px;
 	--card-bg: rgba(255, 255, 255, 0.03);
 	--card-border: rgba(255, 255, 255, 0.1);
@@ -21,9 +21,9 @@
 body {
 	font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
 
-	background: linear-gradient(-45deg, #470404, #b81515, #ff3366, #ff5f5f);
+	
 	background-size: 400% 400%;
-  	animation: gradientMove 15s ease infinite;
+  
 	color: var(--color-text);
 	min-height: 100vh;
 	overflow-x: hidden;
@@ -39,8 +39,10 @@ body {
   z-index: -1;
   overflow: hidden;
 
-  background: linear-gradient(-45deg, #470404, #b81515, #ff3366, #ff5f5f);
-  background-size: 400% 400%;
+  background: #000;
+  background-image: 
+    radial-gradient(circle, #fff 1px, transparent 1px); 
+  background-size: 20px 20px;
   animation: gradientMove 15s ease infinite;
 }
 
@@ -170,15 +172,19 @@ h1 {
 }
 
 .cards-container {
-	display: grid;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
 	grid-template-columns: 1fr;
 	gap: 1.5rem;
-	perspective: 1000px;
+	
 }
 
 .card {
 	position: relative;
 	height: 320px;
+	width: 300px;
 	border-radius: var(--card-radius);
 	background: var(--card-bg);
 	border: 1px solid var(--card-border);

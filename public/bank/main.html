@@ -192,9 +192,9 @@
         div.innerHTML = `
           <img src="${prod.image || 'Logos/Shop/default.png'}" style="width:60px; height:60px; border-radius:10px; margin-right:10px;">
           <div>
-            <h4 style="margin:0; color:#333;">${prod.name}</h4>
-            <p style="margin:0; font-size:14px; color:#655;">${prod.description}</p>
-            <strong style="color:#000;">${prod.price} HOT</strong>
+            <h4 style="margin:0; color:white;">${prod.name}</h4>
+            <p style="margin:0; font-size:14px; color:white;">${prod.description}</p>
+            <strong style="color:white;">${prod.price} $</strong>
           </div>
         `;
 
@@ -203,7 +203,7 @@
           detailImage.src = prod.image || 'Logos/Shop/default.png';
           detailName.innerText = prod.name;
           detailDescription.innerText = prod.description;
-          detailPrice.innerText = `${prod.price} HOT`;
+          detailPrice.innerText = `${prod.price} $`;
           productDetailModal.style.display = "flex";
         });
 
