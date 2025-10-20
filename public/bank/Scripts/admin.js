@@ -42,7 +42,7 @@ function showSection(containerId, searchContainerId) {
   }
 }
 
-// Modal Functions
+
 function showModal(title, fields, callback) {
   return new Promise((resolve) => {
     const modal = document.getElementById('modal');
