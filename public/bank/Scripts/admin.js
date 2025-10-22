@@ -948,7 +948,7 @@ onAuthStateChanged(auth, async (user) => {
     if (userSnap.exists() && userSnap.data().role === "admin") {
       loadUsers();
     } else {
-      document.body.innerHTML = "<h2 style='color: red;'>Доступ заборонено: Ви не адміністратор</h2>";
+      window.location.href = "adminAuth.html";
     }
   } else {
     window.location.href = "login.html";
