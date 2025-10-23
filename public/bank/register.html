@@ -29,7 +29,7 @@
             <p>Create account</p>
         </div>
 
-        <form id="registerForm" autocomplete="on" onsubmit="return CheckPasswordAgain()">
+        <form id="registerForm" autocomplete="on" onsubmit="return validateForm()">
             <div class="input-group">
                 <input type="text" id="username" name="username" autocomplete="nickname" required>
                 <label for="username">Username</label>
@@ -38,22 +38,22 @@
             <div class="input-group">
                 <input type="email" id="email" name="email" autocomplete="username" required>
                 <label for="email">Email</label>
-                <div class="error-message" id="email-error">Please enter a valid email</div>
+                <div class="error-message" id="email-error" style="display: none;">Please enter a valid email</div>
             </div>
-             <div class="input-group">
-                <input type="email" id="loginEmailConfirm" required>
-                <label for="email">Enter email again</label>
-                <div class="error-message" id="email-error">Email-error</div>
+            <div class="input-group">
+                <input type="email" id="emailConfirm" name="email_confirm" required>
+                <label for="emailConfirm">Enter email again</label>
+                <div class="error-message" id="email-confirm-error" style="display: none;"></div>
             </div>
             <div class="input-group">
                 <input type="password" id="password" name="password" autocomplete="new-password" required>
                 <label for="password">Password</label>
-                <div class="error-message" id="password-error">Password must be at least 6 characters</div>
+                <div class="error-message" id="password-error" style="display: none;">Password must be at least 6 characters</div>
             </div>
-             <div class="input-group">
-                <input type="password" id="confirm" name="password" autocomplete="new-password" required>
-                <label for="password">Enter password again</label>
-                <div class="error-message" id="password-error">Error confirm password</div>
+            <div class="input-group">
+                <input type="password" id="confirm" name="confirm_password" autocomplete="new-password" required>
+                <label for="confirm">Enter password again</label>
+                <div class="error-message" id="password-confirm-error" style="display: none;"></div>
             </div>
 
             <button type="submit" class="login-button">Create Account</button>
@@ -62,21 +62,74 @@
                 Вже маєте обліковий запис? <a href="login.html" class="signup-text">Увійти</a>
             </div>
         </form>
-
     </div>
+    <script type="module" src="Scripts/register.js"></script>
     <script>
-        function CheckPasswordAgain() {
-            var password = document.getElementById("password").value;
-            var confirmPassword = document.getElementById("confirm").value;
-            if (password != confirmPassword) {
-                alert("Passwords do not match.");
+        function showError(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.textContent = message;
+            element.style.display = 'block';
+        }
+
+        function hideError(elementId) {
+            document.getElementById(elementId).style.display = 'none';
+        }
+
+        function CheckEmailAgain() {
+            const email = document.getElementById("email").value;
+            const confirmEmail = document.getElementById("emailConfirm").value;
+            if (email !== confirmEmail) {
+                showError("email-confirm-error", "Emails do not match.");
                 return false;
+            } else {
+                hideError("email-confirm-error");
+                return true;
             }
-            return true;
+        }
+
+        function CheckPasswordAgain() {
+            const password = document.getElementById("password").value;
+            const confirmPassword = document.getElementById("confirm").value;
+            if (password !== confirmPassword) {
+                showError("password-confirm-error", "Passwords do not match.");
+                return false;
+            } else {
+                hideError("password-confirm-error");
+                return true;
+            }
+        }
+
+        function validateForm() {
+            let isValid = true;
+
+            // Скидання попередніх помилки
+            hideError("email-error");
+            hideError("email-confirm-error");
+            hideError("password-error");
+            hideError("password-confirm-error");
+
+            // Перевірка формату пошти
+            const email = document.getElementById("email").value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showError("email-error", "Please enter a valid email.");
+                isValid = false;
+            }
+
+            // Перевірка довжини пароля
+            const password = document.getElementById("password").value;
+            if (password.length < 6) {
+                showError("password-error", "Password must be at least 6 characters.");
+                isValid = false;
+            }
+
+            // Перевірка співпадіння пошти і пароля
+            if (!CheckEmailAgain()) isValid = false;
+            if (!CheckPasswordAgain()) isValid = false;
+
+            return isValid;
         }
     </script>
-    <script type="module" src="Scripts/register.js"></script>
-
 </body>
 
 </html>

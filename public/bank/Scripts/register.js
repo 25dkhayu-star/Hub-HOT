@@ -20,7 +20,7 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
 
     await setDoc(doc(db, "users", user.uid), {
       username,
-      balance: 100,
+      balance: 0,
       cardNumber
     });
 
