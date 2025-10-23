@@ -1190,6 +1190,7 @@
 </head>
 
 <body>
+    <!-- Хедер -->
     <header id="header">
         <a href="#" class="logo">LY PRIME<span>BANK</span></a>
         <ul class="nav-links">
@@ -1200,6 +1201,7 @@
             <li><a href="/bank/admin.html">🖋</a></li>
 
         </ul>
+         <!-- Гамбургер для телефону -->
         <div class="hamburger">
             <div></div>
             <div></div>
@@ -1208,6 +1210,7 @@
     </header>
 
     <section class="hero" id="home">
+        <!-- Контент головної секції -->
         <div class="hero-content">
             <div class="hero-text">
                 <br><br><br>
@@ -1223,6 +1226,7 @@
                 <div class="social-links"></div>
             </div>
         </div>
+    <!-- Секція команди -->
     </section>
     <div class="line"></div>
     <section class="section" id="team">
@@ -1236,6 +1240,7 @@
                 <h3>PRIMES</h3>
             </div>
         </div>
+     <!-- Секція ІнформаціЇ -->
     </section>
     <div class="line"></div>
     <section class="section" id="news">
@@ -1255,7 +1260,7 @@
             </div>
         </div>
     </section>
-
+    <!-- Секція клуби -->
     <div class="line"></div>
     <section class="section" id="clubs">
         <div class="section-title">
@@ -1273,7 +1278,7 @@
         </div>
     </section>
     <div class="line"></div>
-
+     <!-- Футер та елементи футера -->
     <footer>
         <div class="footer-content">
             <a href="#" class="footer-logo">PRIME<span>BANK</span></a>
@@ -1296,6 +1301,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.6/purify.min.js"></script>
     <script type="module">
+        // Імпорти Firebase
         import { db } from "./Scripts/firebase.js";
         import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
 
@@ -1325,7 +1331,7 @@
                 container.innerHTML = `<p style="text-align: center; color: red;">Помилка загрузки новин.</p>`;
             }
         }
-
+        // Відобреження відео з ютуба якщо в цьому є потреба
         function isYouTubeUrl(url) {
             return url && (url.includes('youtube.com') || url.includes('youtu.be'));
         }
@@ -1352,11 +1358,11 @@
                 return formattedParagraph.trim() ? `<p>${formattedParagraph}</p>` : '';
             }).filter(p => p).join('');
 
-            // Преобразуем URL в кликабельные ссылки
+            // Створення гіперпосилань якщо є посилання в тексті
             const urlPattern = /(https?:\/\/[^\s<]+)/g;
             return paragraphs.replace(urlPattern, '<a href="$1" target="_blank" rel="noopener noreferrer">$1</a>');
         }
-
+        // Відображення новин на сторінці
         function renderPage(page) {
             container.innerHTML = "";
             const start = (page - 1) * perPage;
@@ -1408,7 +1414,7 @@
                 container.appendChild(div);
             });
         }
-
+        
         function renderPagination() {
             pagination.innerHTML = "";
             const totalPages = Math.ceil(newsList.length / perPage);
@@ -1448,7 +1454,7 @@
                 pagination.appendChild(next);
             }
         }
-
+        // Відкриття модального вікна
         function openModal(news) {
             document.getElementById("modalTitle").innerText = news.title || 'Без заголовку';
             document.getElementById("modalText").innerHTML = DOMPurify.sanitize(linkify(news.fullText || 'Повний текст відсутній'));
@@ -1479,13 +1485,13 @@
 
             document.getElementById("newsModal").style.display = "block";
         }
-
+        // Закриття модалки
         window.closeModal = function () {
             document.getElementById("newsModal").style.display = "none";
         };
-
+        // Завантаження колубів з бази
         const clubsContainer = document.getElementById('clubsContainer');
-
+        // Функція відображення загружених клубів
         async function loadClubs() {
             clubsContainer.innerHTML = "";
             try {
@@ -1523,7 +1529,7 @@
                 clubsContainer.innerHTML = `<p style="text-align: center; color: red;">Помилка загрузки клубів.</p>`;
             }
         }
-
+        // Відкриття модалки для клубів
         window.openClubModal = function (club) {
             document.getElementById("clubModalImage").src = club.image2;
             document.getElementById("clubModalLeaderName").innerText = club.leaderName;
@@ -1537,7 +1543,7 @@
         };
 
         const plansContainer = document.getElementById('plansContainer');
-
+        // Функуція підгрузки планів з бази
         async function loadPlans() {
             plansContainer.innerHTML = "";
             try {
@@ -1551,7 +1557,7 @@
                     plansContainer.innerHTML = `<p style="text-align: center;">Coming soon.</p>`;
                     return;
                 }
-
+                // Відображення планів на сторінці
                 plans.forEach(plan => {
                     const progress = plan.progress ?? 0;
                     const div = document.createElement("div");
@@ -1572,6 +1578,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Завантаження новин та клубів та планів при завантаженні сторінки
             loadNews();
             loadClubs();
             loadPlans();
@@ -1591,7 +1598,7 @@
                     }
                 });
             });
-
+            // Закриття меню при кліку на посилання
             links.forEach(link => {
                 link.addEventListener('click', () => {
                     navLinks.classList.remove('active');
@@ -1601,7 +1608,7 @@
                     });
                 });
             });
-
+            // Показати кнопку для скролу
             const scrollTop = document.querySelector('.scroll-top');
             window.addEventListener('scroll', () => {
                 const header = document.getElementById('header');
