@@ -245,7 +245,9 @@ h1 {
 	opacity: 0.8;
 	transform: translateZ(15px);
 }
-
+.cards-container{
+		flex-direction: row;
+	}
 .card-footer {
 	margin-top: auto;
 	display: flex;
@@ -288,12 +290,14 @@ h1 {
         width: 150px;
         height: 150px;
     }
-	.cards-container {
-		flex-direction: column;
-	}
+	
     .card {
         height: 380px;
     }
+	.cards-container{
+		flex-direction: column;
+	}
+
 }
 
 @media (min-width: 640px) {
@@ -325,7 +329,7 @@ h1 {
 		padding: 0.5rem 1rem;
 		margin-bottom: 1.25rem;
 	}
-
+	
 	.card h2 {
 		font-size: 1.6rem;
 	}
@@ -348,7 +352,7 @@ h1 {
 @media (min-width: 768px) {
 	.cards-container {
 		grid-template-columns: repeat(2, 1fr);
-		flex-direction: column;
+		
 	}
 
 	.gradient-blob {

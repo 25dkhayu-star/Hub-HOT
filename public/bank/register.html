@@ -29,22 +29,31 @@
             <p>Create account</p>
         </div>
 
-        <form id="registerForm" autocomplete="on">
+        <form id="registerForm" autocomplete="on" onsubmit="return CheckPasswordAgain()">
             <div class="input-group">
                 <input type="text" id="username" name="username" autocomplete="nickname" required>
                 <label for="username">Username</label>
             </div>
-
+            
             <div class="input-group">
                 <input type="email" id="email" name="email" autocomplete="username" required>
                 <label for="email">Email</label>
                 <div class="error-message" id="email-error">Please enter a valid email</div>
             </div>
-
+             <div class="input-group">
+                <input type="email" id="loginEmailConfirm" required>
+                <label for="email">Enter email again</label>
+                <div class="error-message" id="email-error">Email-error</div>
+            </div>
             <div class="input-group">
                 <input type="password" id="password" name="password" autocomplete="new-password" required>
                 <label for="password">Password</label>
                 <div class="error-message" id="password-error">Password must be at least 6 characters</div>
+            </div>
+             <div class="input-group">
+                <input type="password" id="confirm" name="password" autocomplete="new-password" required>
+                <label for="password">Enter password again</label>
+                <div class="error-message" id="password-error">Error confirm password</div>
             </div>
 
             <button type="submit" class="login-button">Create Account</button>
@@ -55,6 +64,17 @@
         </form>
 
     </div>
+    <script>
+        function CheckPasswordAgain() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm").value;
+            if (password != confirmPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            return true;
+        }
+    </script>
     <script type="module" src="Scripts/register.js"></script>
 
 </body>
