@@ -254,7 +254,7 @@
         embeds: [
           {
             title: "🛒 Нове замовлення",
-            description: `**Покупець:** ${userData.username}\n**Товар:** ${selectedProduct.name}\n**Ціна:** ${selectedProduct.price} HOT\n**Артикул:** ${selectedProduct.article}`,
+            description: `**Покупець:** ${userData.username}\n**Товар:** ${selectedProduct.name}\n**Ціна:** ${selectedProduct.price} $\n**Артикул:** ${selectedProduct.article}`,
             color: 0x4CAF50,
             timestamp: new Date().toISOString()
           }
@@ -469,7 +469,7 @@
 
           p.addEventListener("click", () => {
             document.getElementById("transactionModal").style.display = "flex";
-            document.getElementById("txAmount").innerText = `${transfer.amount} HOT`;
+            document.getElementById("txAmount").innerText = `${transfer.amount} $`;
             document.getElementById("txFrom").innerText = `Від: ${transfer.from}`;
             document.getElementById("txTime").innerText = transfer.timestamp
               ? `Час: ${transfer.timestamp.toDate().toLocaleString()}`

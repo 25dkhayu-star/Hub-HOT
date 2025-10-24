@@ -363,6 +363,7 @@ header.scrolled {
     position: relative;
     display: inline-block;
     animation: glow 2s infinite alternate;
+    color: white;
 }
 
 .section-title h2::after {
@@ -949,8 +950,8 @@ footer {
 
 .stat-card {
     background: rgba(255, 255, 255, 0.1);
-    padding: 2rem;
-    border-radius: 20px;
+    padding: 4rem;
+    border-radius: 40px;
     box-shadow: var(--card-shadow);
     backdrop-filter: blur(15px);
     text-align: center;
@@ -959,14 +960,14 @@ footer {
 }
 
 .stat-card h3 {
-    font-size: 2rem;
+    font-size: 4rem;
     color: var(--primary);
     margin-bottom: 1rem;
     animation: glow 2s infinite alternate;
 }
 
 .stat-card p {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     color: var(--light);
 }
 
