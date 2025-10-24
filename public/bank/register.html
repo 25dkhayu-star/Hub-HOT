@@ -48,11 +48,17 @@
             <div class="input-group">
                 <input type="password" id="password" name="password" autocomplete="new-password" required>
                 <label for="password">Password</label>
+                <span class="toggle-password" onclick="togglePassword('password', 'password-toggle')">
+                    <i id="password-toggle" class="fas fa-eye"></i>
+                </span>
                 <div class="error-message" id="password-error" style="display: none;">Password must be at least 6 characters</div>
             </div>
             <div class="input-group">
                 <input type="password" id="confirm" name="confirm_password" autocomplete="new-password" required>
                 <label for="confirm">Enter password again</label>
+                <span class="toggle-password" onclick="togglePassword('confirm', 'confirm-toggle')">
+                    <i id="confirm-toggle" class="fas fa-eye"></i>
+                </span>
                 <div class="error-message" id="password-confirm-error" style="display: none;"></div>
             </div>
 
@@ -102,7 +108,7 @@
         function validateForm() {
             let isValid = true;
 
-            // Скидання попередніх помилки
+            // Скидання попередніх помилок
             hideError("email-error");
             hideError("email-confirm-error");
             hideError("password-error");
@@ -128,6 +134,20 @@
             if (!CheckPasswordAgain()) isValid = false;
 
             return isValid;
+        }
+
+        function togglePassword(inputId, toggleId) {
+            const input = document.getElementById(inputId);
+            const toggle = document.getElementById(toggleId);
+            if (input.type === "password") {
+                input.type = "text";
+                toggle.classList.remove("fa-eye");
+                toggle.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                toggle.classList.remove("fa-eye-slash");
+                toggle.classList.add("fa-eye");
+            }
         }
     </script>
 </body>

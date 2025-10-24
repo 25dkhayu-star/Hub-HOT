@@ -31,7 +31,22 @@ body {
   background-position: 0 0;
   animation: moveDots 70s linear infinite;
 }
+.input-group {
+    position: relative;
+}
 
+.toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+}
+
+.toggle-password i {
+    font-size: 1.2em;
+}
 .login-container {
     background: rgba(255, 255, 255, 0.205);
 	border: 2px solid rgba(255, 255, 255, 0.2);
