@@ -6,7 +6,6 @@
     <title>Sign In Lyceum PRIME BANK</title>
     <link rel="stylesheet" href="Style/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
 </head>
 <body>
     <div class="circles">
@@ -22,32 +21,38 @@
         </div>
 
         <form id="loginForm">
-            <div class="input-group">
+         
+            <div class="input-group" id="emailGroup">
                 <input type="email" id="loginEmail" required>
                 <label for="email">Email</label>
                 <div class="error-message" id="email-error">Email-error</div>
             </div>
            
-
-            <div class="input-group">
+            <div class="input-group" id="passwordGroup">
                 <input type="password" id="loginPassword" required>
+                
                 <label for="password">Password</label>
                 <div class="error-message" id="password-error">Password must be at least 6 characters</div>
             </div>
 
-           
-
-            <button type="submit" class="login-button">Login</button>
-
-            <div class="signup-link">
-                Don't have a account? <a href="register.html" class="signup-text">Create account</a>
-                
+    
+            <div class="input-group" id="usernameGroup" style="display: none;">
+                <input type="text" id="usernameInput" required>
+                <label for="usernameInput">Username</label>
+                <div class="error-message" id="username-error">Please enter a valid username</div>
             </div>
 
-            
+            <button type="submit" class="login-button" id="loginButton">Login</button>
+            <button type="button" class="login-button" id="usernameButton" style="display: none;">Submit Username</button>
+            <br>
+            <br>
+            <button type="button" id="googleSignIn" class="login-button"><i class="fab fa-google" style="margin-right: 10px; padding-left: 10px;"></i>Continue with Google</button>
+            <div class="signup-link">
+                Don't have a account? <a href="register.html" class="signup-text">Create account</a>
+            </div>
         </form>
     </div>
 
     <script type="module" src="Scripts/login.js"></script>
 </body>
-</html>            
+</html>
