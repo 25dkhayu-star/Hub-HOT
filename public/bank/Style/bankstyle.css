@@ -10,7 +10,7 @@
 body {
   background: #000;
   background-image: 
-    radial-gradient(circle, #808080 1px, transparent 1px); /* Base dots in gray */
+    radial-gradient(circle, #808080 1px, transparent 1px); 
   background-size: 20px 20px;
   height: 100vh;
   display: flex;
@@ -31,7 +31,7 @@ body::before {
   width: 100%;
   height: 100%;
   background-image: 
-    radial-gradient(circle, #fff 1px, transparent 1px); /* Overlay dots in white */
+    radial-gradient(circle, #fff 1px, transparent 1px);
   background-size: 20px 20px;
   animation: shimmer 3s ease-in-out infinite, moveDots 70s linear infinite;
   pointer-events: none;
@@ -411,12 +411,7 @@ button:hover::before {
   to { opacity: 1; transform: scale(1); }
 }
 
-@font-face {
-  font-family: 'MyFont';
-  src: url('/fonts/e-Ukraine-Light.otf') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+
 
 .modal-content {
   
@@ -559,13 +554,12 @@ button:hover::before {
 .dragon-image {
   width: 150px;
   height: 150px;
-  border-radius: 15px;
-  background: linear-gradient(135deg, #f3f3f3, #ffebee);
+ 
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
   animation: sway 3s ease-in-out infinite;
 }
 
